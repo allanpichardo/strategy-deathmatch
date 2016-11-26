@@ -1,18 +1,19 @@
-    // Configure glob patterns for excluding files and folders.
+// Place your settings in this file to overwrite the default settings
+{
     "files.exclude": {
-        "**/.git": true,
-        "**/.DS_Store": true,
-        "**/*.meta": true,
-        "**/*.*.meta": true,
-        "**/*.unity": true,
-        "**/*.unityproj": true,
-        "**/*.mat": true,
-        "**/*.fbx": true,
-        "**/*.FBX": true,
-        "**/*.tga": true,
-        "**/*.cubemap": true,
-        "**/**.prefab": true,
-        "**/Library": true,
-        "**/ProjectSettings": true,
-        "**/Temp": true
+        "**/.git": false,
+        "**/.DS_Store": false,
+        "**/*.meta": false,
+        "**/*.*.meta": false,
+        "**/*.unity": false,
+        "**/*.unityproj": false,
+        "**/*.mat": false,
+        "**/*.fbx": false,
+        "**/*.FBX": false,
+        "**/*.tga": false,
+        "**/*.cubemap": false,
+        "**/**.prefab": false,
+        "Library": false,
+        "ProjectSettings": false
     }
+}

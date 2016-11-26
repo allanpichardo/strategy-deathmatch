@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: e36069203b9ed48d7bd70d091eff6ea7
-timeCreated: 1480122886
+guid: 351a71a99d5214ee68948566287dbd4a
+timeCreated: 1480126014
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: <STL_BINARY>
-    100002: //RootNode
-    400000: <STL_BINARY>
-    400002: //RootNode
+    100000: //RootNode
+    100002: <STL_BINARY>
+    400000: //RootNode
+    400002: <STL_BINARY>
     2300000: <STL_BINARY>
     3300000: <STL_BINARY>
     4300000: <STL_BINARY>
+    6400000: <STL_BINARY>
   materials:
     importMaterials: 1
     materialName: 0
@@ -38,13 +39,13 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
+    keepQuads: 1
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
