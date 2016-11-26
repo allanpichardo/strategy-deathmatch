@@ -9,9 +9,9 @@ public class GridController : MonoBehaviour {
 	public int gridWidth = 11;
 	public int gridHeight = 11;
 
-	private float hexWidth = 25.0f;
-	private float hexHeight = 25.0f;
-	public float gap = 0.0f;
+	private float hexWidth = 0.9f;
+	private float hexHeight = 1.0f;
+	private float gap = 1f;
 
 	public Vector3 startPosition;
 
@@ -24,7 +24,7 @@ public class GridController : MonoBehaviour {
 	}
 
 	private void AddGapOffset(){
-		hexWidth += hexWidth * gap;
+		hexWidth += (hexWidth * gap);
 		hexHeight += hexHeight * gap;
 	}
 
@@ -50,9 +50,28 @@ public class GridController : MonoBehaviour {
 				hex.parent = this.transform;
 				hex.name = "hexagon" + x + "|" + y;
 
+				HexTile tile = hex.GetComponent<HexTile>();
+				tile.x = x;
+				tile.y = y;
+
+				DetermineTerrain(ref tile);
+
 			}
 		}
 	}
+
+    private void DetermineTerrain(ref HexTile tile)
+    {
+        //TODO implement logic to generate terrain
+		//(random implementation for now to test clicking
+		//features.)
+		int rand = (int) Math.Round(UnityEngine.Random.value);
+
+		if(rand == 1){
+			tile.isTraversable = false;
+			tile.transform.GetComponentInChildren<MeshRenderer>().material.color = Color.black;
+		}
+    }
 
     private Vector3 CalculateWorldPosition(Vector2 gridPosition)
     {
