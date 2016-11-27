@@ -10,7 +10,7 @@ public class HexTile : MonoBehaviour {
 	public int y;
 	public bool isTraversable = true;
 
-	public HexTile[] GetWalkableTilesFromRadius(int radius){
+	public HexTile[] GetWalkableTilesByRadius(int radius){
 		ArrayList tiles = new ArrayList();
 		
 
@@ -50,4 +50,16 @@ public class HexTile : MonoBehaviour {
 		
 		return tile != null ? tile.GetComponent<HexTile>() : null;
 	}
+
+	public void SetColor(UnityEngine.Color color){
+		GetComponentInChildren<MeshRenderer>().material.color = color;
+	}
+
+	public void HighlightWalkableTiles(int radius)
+    {
+		HexTile[] hexTiles = GetWalkableTilesByRadius(radius);
+        foreach(HexTile tile in hexTiles){
+			tile.SetColor(Color.green);
+		}
+    }
 }

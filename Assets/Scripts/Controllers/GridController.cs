@@ -75,6 +75,17 @@ public class GridController : MonoBehaviour {
 		}
     }
 
+	public static void ResetAllTiles()
+    {
+        GameObject grid = GameObject.Find(GridController.BASE_NAME);
+		if(grid != null){
+			MeshRenderer[] renderers = grid.GetComponentsInChildren<MeshRenderer>();
+			foreach(MeshRenderer renderer in renderers){
+				renderer.material.color = Color.white;
+			}
+		}
+    }
+
     private Vector3 CalculateWorldPosition(Vector2 gridPosition)
     {
         float offset = 0.0f;
