@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HexTile : MonoBehaviour {
 
@@ -43,6 +44,24 @@ public class HexTile : MonoBehaviour {
 		return tiles.ToArray(typeof(HexTile)) as HexTile[];
 	}
 
+	public HexTile[] GetNeighborsInRange(int radius){
+		HashSet<HexTile> tiles = new HashSet<HexTile>();
+
+		for(int dx = -radius; dx <= radius; ++dx){
+			for(int dy = Mathf.Max(-radius, -dx - radius); dy <= Mathf.Min(radius, -dx + radius); ++dy){
+				int dz = -dx - dy;
+
+				var center = new OffsetCoordinate(this.x, this.y);
+				var offsetCube = new CubeCoordinate(dx, dy, dz);
+				tiles.Add(HexTile.FindByOffset(center, HexUtils.CubeCoordToOffsetCoord(offsetCube, center.IsEven())));
+			}
+		}
+
+		HexTile[] results = new HexTile[tiles.Count];
+		tiles.CopyTo(results);
+		return results;
+	}
+
 	/// returns null if not found
 	public static HexTile FindByCoordinate(int x, int y){
 		string name = HexTile.DEFAULT_NAME + x + HexTile.DEFAULT_DELIMITER + y;
@@ -51,13 +70,19 @@ public class HexTile : MonoBehaviour {
 		return tile != null ? tile.GetComponent<HexTile>() : null;
 	}
 
+	public static HexTile FindByOffset(OffsetCoordinate center, OffsetCoordinate offset){
+		int x = center.x + offset.x;
+		int y = center.y + offset.y;
+		return FindByCoordinate(x, y);
+	}
+
 	public void SetColor(UnityEngine.Color color){
 		GetComponentInChildren<MeshRenderer>().material.color = color;
 	}
 
 	public void HighlightWalkableTiles(int radius)
     {
-		HexTile[] hexTiles = GetWalkableTilesByRadius(radius);
+		HexTile[] hexTiles = GetNeighborsInRange(radius);
         foreach(HexTile tile in hexTiles){
 			tile.SetColor(Color.green);
 		}
