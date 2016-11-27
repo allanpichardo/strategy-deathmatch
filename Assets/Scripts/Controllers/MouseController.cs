@@ -39,7 +39,7 @@ public class MouseController : MonoBehaviour {
     {
         //TODO implement actions
 		//Debug.Log("Tile Clicked: " + hexTile.transform.name);
-		hexTile.HighlightWalkableTiles(2);
+		hexTile.HighlightWalkableTiles(1);
     }
 
     private void OnTileHover(HexTile hexTile)
