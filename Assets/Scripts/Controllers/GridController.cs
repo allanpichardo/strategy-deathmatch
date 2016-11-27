@@ -4,6 +4,8 @@ using System;
 
 public class GridController : MonoBehaviour {
 
+	public static readonly string BASE_NAME = "Grid";
+
 	public Transform hexPrefab;
 
 	public int gridWidth = 11;
@@ -48,13 +50,13 @@ public class GridController : MonoBehaviour {
 				
 				hex.position = CalculateWorldPosition(gridPosition);
 				hex.parent = this.transform;
-				hex.name = "hexagon" + x + "|" + y;
+				hex.name = HexTile.DEFAULT_NAME + x + HexTile.DEFAULT_DELIMITER + y;
 
 				HexTile tile = hex.GetComponent<HexTile>();
 				tile.x = x;
 				tile.y = y;
 
-				DetermineTerrain(ref tile);
+				//DetermineTerrain(ref tile);
 
 			}
 		}
