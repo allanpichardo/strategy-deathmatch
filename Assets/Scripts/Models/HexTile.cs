@@ -20,7 +20,8 @@ public class HexTile : MonoBehaviour {
 
 				var center = new OffsetCoordinate(this.x, this.y);
 				var offsetCube = new CubeCoordinate(dx, dy, dz);
-				tiles.Add(HexTile.FindByOffset(center, HexUtils.CubeCoordToOffsetCoord(offsetCube, center.IsEven())));
+				HexTile neighbor = HexTile.FindByOffset(center, HexUtils.CubeCoordToOffsetCoord(offsetCube, center.IsEven())); 
+				if(neighbor != null) tiles.Add(neighbor);
 			}
 		}
 
